@@ -1,0 +1,49 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <div class="contact-area section-padding-0-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h2>Crear cuenta</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="contact-form-area">
+                        <form action="{% url 'registro' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12 col-lg-12">
+                                    <label for="nombre_receta"><b>Nombre completo</b></label>
+                                    <input type="text" class="form-control" pattern="[^><\]\[\}\{()]+" title="Solo se permiten alfanumericos" name="nombre" placeholder="Ejm: Sarah Connor" required>
+                                </div>
+                                <div class="col-12 col-lg-12">
+                                    <label for="email"><b>Correo</b></label>
+                                    <input type="email" class="form-control" name="email" placeholder="Ejm: sara@gmail.com" required>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="password"><b>Clave</b></label>
+                                    <input type="password" class="form-control" pattern="[A-Za-z0-9]+" title="Solo se permiten caracateres alfanuméricos"  name="password" placeholder="Digite su clave" required>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="password_confirmation"><b>Confirmacion de clave</b></label>
+                                    <input type="password" class="form-control" name="password_confirmation" placeholder="Digite su clave una vez mas" required>
+                                </div>
+                                <div class="col-12 text-center mt-4">
+                                    <button class="btn btn-success" type="submit">Crear su cuenta</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

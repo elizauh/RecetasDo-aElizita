@@ -1,0 +1,82 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- <div class="receipe-post-search mb-80">
+        <div class="container">
+            <form action="#" method="post">
+                <div class="row">
+                    <div class="col-12 col-lg-5">
+                        <select name="select1" id="select1">
+                            <option value="1">Comida típica brasileira</option>
+                            <option value="1">Massas</option>
+                            <option value="1">Veganas</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-lg-2 text-right">
+                        <button type="submit" class="btn delicious-btn">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div> -->
+
+    <!-- Receipe Slider -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="receipe-slider owl-carousel">
+                    {% if receta.foto == '' %}
+                        <img src="{% static './img/bg-img/tomate_banner.jpg' %}">
+                    {% else %}
+                        <img src="{{ receta.foto.url }}" alt="">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <!-- Receipe Content Area -->
+    <div class="receipe-content-area">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <div class="receipe-headline my-5">
+                        <span>{{receta.data_criacao}}</span>
+                        <h2>{{receta.nombre}}</h2>
+                        <div class="receipe-duration">
+                            <h6>Preparacion: {{receta.tiempo_preparacion}}</h6>
+                            <h6>Rendimento: {{receta.rendimento}}</h6>
+                            <h6>Categoria: {{receta.categoria}}</h6>
+                            <h6>Por: {{receta.persona}}</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Ingredientes -->
+                    <div class="col-12 col-lg-4">
+                        <div class="ingredients">
+                            <h4>Ingredientes</h4>
+                            <div class="ingredients">
+                                <p>{{receta.ingredientes}}</p>
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-lg-8">
+                        <div class="ingredients">
+                            <h4>Modo de preparacion</h4>
+                            <div class="single-preparation-step d-flex">
+                                <p>{{receta.modo_preparacion}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Ingredientes -->
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+
+    <section class="best-receipe-area">
+        <div class="container">
+            <div class="row">
+                
+                {% if recetas %}
+                    {% for receta in recetas %}
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="single-best-receipe-area mb-30">
+                                {% if receta.foto == '' %}
+                                    <img src="{% static './img/bg-img/foto_receita.png' %}" alt="">
+                                {% else %}
+                                    <img src="{{ receta.foto.url }}" alt="">
+                                {% endif %}
+                                <div class="receipe-content">
+                                    <a href="{% url 'recetas.show' receta.id %}">
+                                        <h5>{{ receta }}</h5>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No se encontraron recetas.</p>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+    {% include 'recetas/_pagination.html' %}
+
+{% endblock %}

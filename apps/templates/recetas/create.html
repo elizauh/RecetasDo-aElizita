@@ -1,0 +1,62 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+    
+    <!-- ##### Contact Form Area Start ##### -->
+    <div class="contact-area section-padding-0-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h3>Registre su receta, {{ user.username }} :)</h3>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-12">
+                <p>Todos los campos son obligatorios</p>
+                    <div class="contact-form-area">
+                        <form action="{% url 'recetas.create' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12 col-lg-12">
+                                    <label for="nombre"><b>Título de la receta</b></label>
+                                    <input type="text" id="nombre" class="form-control" name="nombre" placeholder="Ejm: Limonada" pattern="[^><\]\[\}\{()]+" title="Solo se permiten alfanumericos" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="ingredientes"><b>Ingredientes</b></label>
+                                    <textarea class="form-control" name="ingredientes" cols="30" rows="10" placeholder="Ejm. 2 Limones &#10;200ml de agua" pattern="[^><\]\[\}\{()]+" title="Solo se permiten alfanumericos" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label for="modo_preparacion"><b>Forma de preparar</b></label>
+                                    <textarea class="form-control" name="modo_preparacion" cols="30" rows="10" placeholder="Ejm: Corte los limones con cuidado y exprima en un vaso  &#10;Mescle con agua y sirva." pattern="[^><\]\[\}\{()]+" title="Solo se permiten alfanumericos" required></textarea>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <label for="tiempo_preparacion"><b>Tiempo de preparacion (minutos)</b></label>
+                                    <input type="number" class="form-control" name="tiempo_preparacion" placeholder="Ejm: 2" required>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <label for="rendimento"><b>Rendimento</b></label>
+                                    <input type="text" class="form-control" name="rendimento" placeholder="Ejm: alcanza para una persona" pattern="[^><\]\[\}\{()]+" title="Solo se permiten alfanumericos" required>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <label for="categoria"><b>Categoria de la receta</b></label>
+                                    <input type="text" class="form-control" name="categoria" placeholder="Ejm: Jugos y bebidas" pattern="[^><\]\[\}\{()]+" title="Solo se permiten alfanumericos" required>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <label for="foto"><b>Foto</b></label>
+                                    <input type="file" accept="image/*" class="form-control" name="foto" required>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button class="btn delicious-btn mt-30" type="submit">Crear su receta</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
